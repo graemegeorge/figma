@@ -9,7 +9,7 @@ jobs:
    - name: Update theme file
      uses: DamianReeves/write-file-action@v1.0
      with:
-       path: ./theme.js
+       path: ./theme.json
        contents: ${{github.event.client_payload.tokens}}
        write-mode: overwrite
     
