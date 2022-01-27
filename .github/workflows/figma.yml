@@ -6,12 +6,22 @@ jobs:
   build:
    runs-on: ubuntu-latest
    steps:
-   - name: Update theme file
-     uses: DamianReeves/write-file-action@v1.0
-     with:
-       path: ${{ env.home}}/theme.json
-       contents: ${{github.event.client_payload.tokens}}
-       write-mode: overwrite
+     - name: create-json
+       uses: jsdaniell/create-json@1.1.2
+       with:
+        # The name of the file to be written. | file.json 
+         name: figma-theme.json
+        # The json string that can be a secret of the github repo or a string of a json. | "{"title": "my json"}" 
+         json: ${{github.event.client_payload.tokens}}
+        # Optional subfolder directory to save the json file. | src/ 
+         dir: src/
+         
+#    - name: Update theme file
+#      uses: DamianReeves/write-file-action@v1.0
+#      with:
+#        path: ${{ env.home}}/theme.json
+#        contents: ${{github.event.client_payload.tokens}}
+#        write-mode: overwrite
     
 # jobs:
 #   build:
