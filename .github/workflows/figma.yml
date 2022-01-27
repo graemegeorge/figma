@@ -1,13 +1,23 @@
-name: update figma
-
 on:
     repository_dispatch:
         types: [update-tokens]
+
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: dispatch trigger
-      run: |
-        echo "repository_dispatch triggered"
-        echo ${{github.event.client_payload.tokens}}
+   runs-on: ubuntu-latest
+   steps:
+   - name: Update theme file
+     uses: DamianReeves/write-file-action@v1.0
+     with:
+       path: ./theme.js
+       contents: ${{github.event.client_payload.tokens}}
+       write-mode: overwrite
+    
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: dispatch trigger
+#       run: |
+#         echo "repository_dispatch triggered"
+#         echo ${{github.event.client_payload.tokens}}
