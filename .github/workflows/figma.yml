@@ -1,8 +1,6 @@
+name: update figma
+
 on:
     repository_dispatch:
         types: [update-tokens]
-        uses: DamianReeves/write-file-action
-        with:
-            path: ${{env.home}}/figma-tokens.json
-            contents: echo "Hello World!"
-            write-mode: overwrite
+        
