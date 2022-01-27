@@ -3,4 +3,10 @@ name: update figma
 on:
     repository_dispatch:
         types: [update-tokens]
-        run: echo ${{client_payload.tokens}}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: dispatch trigger
+      run: |
+        echo "repository_dispatch triggered"
