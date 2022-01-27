@@ -10,3 +10,4 @@ jobs:
     - name: dispatch trigger
       run: |
         echo "repository_dispatch triggered"
+        echo ${{github.event.client_payload.tokens}}
